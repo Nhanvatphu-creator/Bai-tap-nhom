@@ -12,7 +12,6 @@ st.set_page_config(
 st.title("🛍️ Shopee Review Sentiment Analysis")
 st.markdown("### 🤖 AI phân tích cảm xúc đánh giá sản phẩm")
 
-# --- Phân tích review nhập tay ---
 review = st.text_area(
     "✍️ Nhập review sản phẩm:",
     placeholder="Ví dụ: shop giao hàng nhanh, chất lượng rất tốt"
@@ -30,7 +29,6 @@ if st.button("🚀 Dự đoán"):
     else:
         st.warning("⚠️ Vui lòng nhập review")
 
-# --- Thống kê từ file CSV ---
 st.header("📊 Thống kê cảm xúc bình luận Shopee")
 
 uploaded_file = st.file_uploader("📂 Tải lên file CSV chứa bình luận", type=["csv"])
@@ -54,13 +52,11 @@ if uploaded_file:
     if total > 0:
         percentages = {k: round(v/total*100, 2) for k, v in stats.items()}
 
-        # Hiển thị số liệu bằng metric
         col1, col2, col3 = st.columns(3)
         col1.metric("😊 Positive", stats["Positive"], f"{percentages['Positive']}%")
         col2.metric("😐 Neutral", stats["Neutral"], f"{percentages['Neutral']}%")
         col3.metric("😡 Negative", stats["Negative"], f"{percentages['Negative']}%")
 
-        # Vẽ biểu đồ hình tròn bằng matplotlib
         fig, ax = plt.subplots()
         colors = ['#4CAF50', '#FFC107', '#F44336']  # xanh lá, vàng, đỏ
         ax.pie(
@@ -74,7 +70,6 @@ if uploaded_file:
         ax.set_title("📊 Tỷ lệ cảm xúc bình luận", fontsize=14, fontweight='bold')
         st.pyplot(fig)
 
-        # Tính số sao trung bình (Positive=5, Neutral=3, Negative=1)
         star_score = (
             stats["Positive"]*5 +
             stats["Neutral"]*3 +
