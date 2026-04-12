@@ -17,6 +17,17 @@ def predict_sentiment(text):
     text_vec = vectorizer.transform([clean])
     pred = model.predict(text_vec)[0]
 
+NEGATIVE_KEYWORDS = ["xấu", "tệ", "thất vọng", "ồn", "móp", "hỏng", "giả", "chán", "kém"]
+POSITIVE_KEYWORDS = ["tốt", "đẹp", "ngon", "hài lòng", "uy tín", "nhanh", "rẻ", "ổn", "tuyệt"]
+
+def predict_sentiment(review: str) -> str:
+    text = review.lower()
+    if any(word in text for word in NEGATIVE_KEYWORDS):
+        return "😡 Negative"
+    if any(word in text for word in POSITIVE_KEYWORDS):
+        return "😊 Positive"
+    return "😐 Neutral"
+
     if pred == "positive":
         return "😊 Positive"
     elif pred == "negative":
