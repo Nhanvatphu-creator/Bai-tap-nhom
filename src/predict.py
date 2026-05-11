@@ -18,11 +18,11 @@ def predict_sentiment(text):
     pred = model.predict(text_vec)[0]
 
     if pred == "positive":
-        return "😊 Positive"
+        return " Positive"
     elif pred == "negative":
-        return "😡 Negative"
+        return " Negative"
     else:
-        return "😐 Neutral"
+        return " Neutral"
 
 if __name__ == "__main__":
     review = input("Nhập review: ")
