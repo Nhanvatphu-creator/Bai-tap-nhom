@@ -36,7 +36,7 @@ model.fit(X_train, y_train)
 
 # đánh giá
 y_pred = model.predict(X_test)
-print("✅ Accuracy:", accuracy_score(y_test, y_pred))
+print("Accuracy:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 # lưu model
@@ -49,4 +49,4 @@ with open(os.path.join(model_dir, "model.pkl"), "wb") as f:
 with open(os.path.join(model_dir, "vectorizer.pkl"), "wb") as f:
     pickle.dump(vectorizer, f)
 
-print("🎉 Đã lưu model thành công!")
+print(" Đã lưu model thành công!")
